@@ -17,15 +17,13 @@
   font-family: SunsetClub;
   color: #fff;
   font-size: 80px;
-  text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff,
-    0 0 80px #00b3ff, 0 0 120px #00b3ff;
+  text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
 }
 
 @font-face {
   font-family: SunsetClub;
   src: url(./SunsetClub.otf);
 }
-
 @font-face {
   font-family: neon;
   src: url(./neon.ttf);
@@ -34,6 +32,5 @@
   font-family: neon;
   color: #fff;
   font-size: 80px;
-  text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff,
-    0 0 80px #00b3ff, 0 0 120px #00b3ff;
+  text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
 }
