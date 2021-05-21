@@ -13,6 +13,17 @@
   background-size: cover;
 }
 
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
 .sub-header {
   font-family: SunsetClub;
   color: #fff;
@@ -36,4 +47,24 @@
   font-size: 80px;
   text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff,
     0 0 80px #00b3ff, 0 0 120px #00b3ff;
+}
+
+// .button {
+//   position: absolute;
+//   display: flex;
+//   align-items: center;
+// }
+.start {
+  border: 5px solid #15f4ee;
+  color: #15f4ee;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 1.5s;
+}
+
+.start:hover {
+  box-shadow: 0 5px 50px 0 #15f4ee inset, 0 5px 50px 0 #15f4ee inset;
+  text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
 }
