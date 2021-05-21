@@ -8,7 +8,7 @@
 .background {
   height: 100vh;
   width: 100vw;
-  background-image: url("./images/darkimage3.jpg");
+  background-image: url("./images/darkimage2.jpg");
   background-position: centre;
   background-size: cover;
 }
@@ -46,8 +46,8 @@
 }
 
 .lightbar {
-  width: 7px;
-  height: 70%;
+  width: 5px;
+  height: 60%;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
@@ -62,11 +62,19 @@
 .dealer {
   font-family: library;
   font-size: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 25%;
+  left: 30%;
 }
 
 .player {
   font-family: library;
   font-size: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 25%;
+  right: 30%;
 }
 
 @font-face {
@@ -98,6 +106,9 @@
   border-radius: 100px;
   transition: 0.5s;
   padding: 10px;
+  position: absolute;
+  top: 75%;
+  right: 40%;
 }
 
 .hit:hover {
@@ -114,6 +125,9 @@
   border-radius: 100px;
   transition: 0.5s;
   padding: 10px;
+  position: absolute;
+  top: 75%;
+  right: 25%;
 }
 
 .stay:hover {
