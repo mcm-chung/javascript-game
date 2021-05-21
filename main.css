@@ -26,7 +26,7 @@
 .sub-header {
   font-family: SunsetClub;
   color: #fff;
-  font-size: 80px;
+  font-size: 50px;
   text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
 }
 
@@ -41,21 +41,82 @@
 .title {
   font-family: neon;
   color: #fff;
-  font-size: 80px;
+  font-size: 50px;
   text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
 }
 
+.lightbar {
+  width: 7px;
+  height: 70%;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
+}
+
+.opponents {
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
+}
+
+.dealer {
+  font-family: library;
+  font-size: 20px;
+}
+
+.player {
+  font-family: library;
+  font-size: 20px;
+}
+
+@font-face {
+  font-family: library;
+  src: url(./library.otf);
+}
 .start {
-  border: 5px solid #15f4ee;
+  border: 2px solid #15f4ee;
   color: #15f4ee;
   text-transform: uppercase;
-  letter-spacing: 15px;
+  letter-spacing: 5px;
   cursor: pointer;
   border-radius: 100px;
-  transition: 1.5s;
+  transition: 0.5s;
+  padding: 10px;
 }
 
 .start:hover {
-  box-shadow: 0 5px 50px 0 #15f4ee inset, 0 5px 50px 0 #15f4ee inset;
+  box-shadow: 0 5px 25px 0 #15f4ee inset, 0 5px 25px 0 #15f4ee inset;
+  text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
+}
+
+.hit {
+  border: 2px solid #15f4ee;
+  color: #15f4ee;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.5s;
+  padding: 10px;
+}
+
+.hit:hover {
+  box-shadow: 0 5px 25px 0 #15f4ee inset, 0 5px 25px 0 #15f4ee inset;
+  text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
+}
+
+.stay {
+  border: 2px solid #15f4ee;
+  color: #15f4ee;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.5s;
+  padding: 10px;
+}
+
+.stay:hover {
+  box-shadow: 0 5px 25px 0 #15f4ee inset, 0 5px 25px 0 #15f4ee inset;
   text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
 }
