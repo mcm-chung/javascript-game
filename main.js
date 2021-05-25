@@ -63,9 +63,17 @@ function chooseCard() {
 const card = chooseCard();
 console.log(card);
 
-const playerHand = document.querySelector(".player");
+const player = document.querySelector(".player-hand");
+const dealer = document.querySelector(".dealer-hand");
 
 const addCard = () => {
   const card = chooseCard();
-  playerHand.innerHTML += `<div id="${card.value}" class="card${card.suit}"></div>`;
+  player.innerHTML += `<div id="${card.value}" class="card ${card.suit}"></div>`;
+  dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}"></div>`;
 };
+
+addCard();
+
+for (let index = 0; index < 4; index++) {
+  addCard();
+}

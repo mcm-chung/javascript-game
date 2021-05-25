@@ -160,3 +160,31 @@
   box-shadow: 0 5px 25px 0 #15f4ee inset, 0 5px 25px 0 #15f4ee inset;
   text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
 }
+
+.card {
+  height: 190px;
+  width: 110px;
+  border: 3px solid white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 40px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff;
+}
+
+.player-hand {
+  position: absolute;
+  top: 35%;
+  right: 55%;
+  min-height: 300px;
+  min-width: 300px;
+  border: 2px solid red;
+  display: flex;
+}
+
+.dealer-hand {
+  position: absolute;
+  top: 35%;
+  left: 55%;
+  min-height: 300px;
+  min-width: 300px;
+  border: 2px solid red;
+  display: flex;
+}
