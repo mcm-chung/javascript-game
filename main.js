@@ -35,17 +35,37 @@ for (let i = 0; i < suits.length; i++) {
 // console.log(deck);
 
 //shuffle method
-function shuffle(deck) {
-  for (let i = 0; i < 1000; i++) {
-    let location1 = Math.floor(Math.random() * deck.length);
-    let location2 = Math.floor(Math.random() * deck.length);
+// function shuffle() {
+//   for (let i = 0; i < deck.length; i++) {
+//     let location1 = Math.floor(Math.random() * deck.length);
+//     let location2 = Math.floor(Math.random() * deck.length);
 
-    let temp = deck[location1];
-    deck[location1] = deck[location2];
-    deck[location2] = temp;
-  }
+//     shuffleDeck.push(deck[location1]);
+//   }
+//   console.log(shuffleDeck);
+// }
+// shuffle();
+
+//choose card
+
+function chooseCard() {
+  let choice = Math.floor(Math.random() * deck.length);
+  const cardChoice = deck[choice];
+
+  const firstDeckHalf = deck.slice(0, choice);
+  const secondDeckHalf = deck.slice(choice + 1);
+  deck = firstDeckHalf.concat(secondDeckHalf);
+  console.log(deck.length);
+  console.log(deck[choice]);
+  console.log(cardChoice);
+  return cardChoice;
 }
+const card = chooseCard();
+console.log(card);
 
-console.log(shuffle(deck));
+const playerHand = document.querySelector(".player");
 
-// console.log(deck);
+const addCard = () => {
+  const card = chooseCard();
+  playerHand.innerHTML += `<div id="${card.value}" class="card${card.suit}"></div>`;
+};
