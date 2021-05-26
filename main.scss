@@ -196,7 +196,8 @@
 .player-hand {
   position: absolute;
   top: 35%;
-  right: 55%;
+  // right: 55%;
+  left: 55%;
   min-height: 300px;
   min-width: 300px;
   // border: 2px solid red;
@@ -206,7 +207,8 @@
 .dealer-hand {
   position: absolute;
   top: 35%;
-  left: 55%;
+  // left: 55%;
+  right: 55%;
   min-height: 300px;
   min-width: 300px;
   // border: 2px solid red;
