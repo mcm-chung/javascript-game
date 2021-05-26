@@ -4,7 +4,7 @@ const hitButton = document.querySelector(".hit");
 const standButton = document.querySelector(".stand");
 
 // Card variables
-var suits = ["spades", "diamonds", "clubs", "hearts"];
+var suits = ["spade", "diamond", "club", "heart"];
 var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
 //Game variables
@@ -17,12 +17,12 @@ let gameStart = false;
 let gameOver = false;
 
 // button;
-// hitButton.style.display = "none";
-// standButton.style.display = "none";
+hitButton.style.display = "none";
+standButton.style.display = "none";
 
-// startButton.addEventListener("click", () => {
-//   start.main.display("none");
-// });
+startButton.addEventListener("click", () => {
+  start.main.display("none");
+});
 
 //building a deck of cards
 class Card {
@@ -37,7 +37,7 @@ for (let i = 0; i < suits.length; i++) {
   for (let x = 0; x < values.length; x++) {
     const weight = parseInt(values[i]);
     if (values[i] == "J" || values[i] == "Q" || values[i] == "K") weight = 10;
-    if (values[i] == "J") weight = 11;
+    if (values[i] == "A") weight = 11;
     let card = { value: values[x], suit: suits[i] };
     deck.push(card);
   }
@@ -78,9 +78,12 @@ const player = document.querySelector(".player-hand");
 const dealer = document.querySelector(".dealer-hand");
 
 const addCard = () => {
+  // const card = chooseCard();
+  // player.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}</div>`;
+  // dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}</div>`;
   const card = chooseCard();
-  player.innerHTML += `<div id="${card.value}" class="card ${card.suit}"></div>`;
-  dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}"></div>`;
+  player.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}  <span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
+  dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value} <span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
 };
 
 addCard();
@@ -93,13 +96,16 @@ addCard();
 // player.push(card.pop()).innerHTML;
 
 startNewGame = () => {
+  const card = chooseCard();
   gameStart = true;
-  for (let index = 0; index < 2; index++) {
+  for (let index = 0; index < 3; index++) {
     addCard();
     playerHand.push(card);
     dealerHand.push(card);
   }
 };
+
+startNewGame();
 
 hitButton.addEventListener("click", (e) => {
   playerHands.push(card);
