@@ -1,20 +1,28 @@
 // DOM variables:
-// const startButton = document.querySelector(".start");
-// const hitButton = document.querySelector(".hit");
-// const standButton = document.querySelector(".stand");
+const startButton = document.querySelector(".start");
+const hitButton = document.querySelector(".hit");
+const standButton = document.querySelector(".stand");
 
 // Card variables
 var suits = ["spades", "diamonds", "clubs", "hearts"];
-var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
 //Game variables
 let deck = [];
 let playerHand = [];
 let dealerHand = [];
-let playerScore = 0;
-let dealerScore = 0;
+let playerPoints = 0;
+let dealerPoints = 0;
 let gameStart = false;
 let gameOver = false;
+
+// button;
+// hitButton.style.display = "none";
+// standButton.style.display = "none";
+
+// startButton.addEventListener("click", () => {
+//   start.main.display("none");
+// });
 
 //building a deck of cards
 class Card {
@@ -27,6 +35,9 @@ class Card {
 //create deck with suit and values
 for (let i = 0; i < suits.length; i++) {
   for (let x = 0; x < values.length; x++) {
+    const weight = parseInt(values[i]);
+    if (values[i] == "J" || values[i] == "Q" || values[i] == "K") weight = 10;
+    if (values[i] == "J") weight = 11;
     let card = { value: values[x], suit: suits[i] };
     deck.push(card);
   }
@@ -74,6 +85,44 @@ const addCard = () => {
 
 addCard();
 
-for (let index = 0; index < 4; index++) {
-  addCard();
+// for (let index = 0; index < 1; index++) {
+//   addCard();
+// }
+
+// player.push(deck.pop()).innerHTML;
+// player.push(card.pop()).innerHTML;
+
+startNewGame = () => {
+  gameStart = true;
+  for (let index = 0; index < 2; index++) {
+    addCard();
+    playerHand.push(card);
+    dealerHand.push(card);
+  }
+};
+
+hitButton.addEventListener("click", (e) => {
+  playerHands.push(card);
+  checkEndOfGame();
+});
+
+standButton.addEventListener("click", (e) => {
+  gameOver = true;
+  checkEndOfGame();
+});
+
+function checkEndOfGame() {
+  if (playerPoints > 21) {
+    playerWon = false;
+    gameOver = true;
+  } else if (dealerPoints > 21) {
+    playerWon = true;
+    gameOver = true;
+  } else if (gameOver) {
+    if (playerPoints > dealerPoints) {
+      playerWon = true;
+    } else {
+      playerWon = false;
+    }
+  }
 }
