@@ -250,26 +250,41 @@
   box-shadow: 0 0 10px #15f4ee, 0 0 20px #15f4ee, 0 0 40px #15f4ee;
 }
 
-// .hearts {
-//   // background-color: red;
-// }
-
-// .spades {
-//   // background-color: purple;
-// }
-
-// .diamonds {
-//   // background-color: blue;
-// }
-
-// .clubs {
-//   // &__iconify {
-//   //   color: greenyellow;
-//   // }
-//   // background-color: green;
-// }
-
 .iconify {
   color: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
   // text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
+}
+
+@font-face {
+  font-family: casino4;
+  src: url(./casino4.ttf);
+}
+.dealerWins {
+  font-family: casino4;
+  font-size: 60px;
+  color: white;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #ffc803, 0 0 20px #ffc803, 0 0 40px #ffc803,
+    0 0 80px #ffc803;
+  margin-top: 15px;
+}
+
+.playerWins {
+  font-family: casino4;
+  font-size: 60px;
+  color: white;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #ffc803, 0 0 20px #ffc803, 0 0 40px #ffc803,
+    0 0 80px #ffc803;
+  margin-top: 15px;
+}
+
+.draw {
+  font-family: casino4;
+  font-size: 60px;
+  color: white;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #ffc803, 0 0 20px #ffc803, 0 0 40px #ffc803,
+    0 0 80px #ffc803;
+  margin-top: 15px;
 }
