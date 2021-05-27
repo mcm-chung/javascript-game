@@ -2,7 +2,7 @@
 const startButton = document.querySelector(".start");
 const hitButton = document.querySelector(".hit");
 const standButton = document.querySelector(".stand");
-
+// const pointPlayerDisplay = document.querySelector("#player-results");
 // Card variables
 var suits = ["spade", "diamond", "club", "heart"];
 var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -105,24 +105,18 @@ startButton.addEventListener("click", () => {
 
   // if (gameStart === false) {
   for (let index = 0; index < 2; index++) {
-    const dealerCard = addCard(dealer);
-    const playerCard = addCard(player);
+    const addDealerCard = addCard(dealer);
+    const addPlayerCard = addCard(player);
     // addCard(dealer);
     // addCard(player);
-    dealerHand.push(dealerCard);
-    playerHand.push(playerCard);
+    dealerHand.push(addDealerCard);
+    playerHand.push(addPlayerCard);
     const points = getCardTotal(playerHand);
     playerPoints = points;
     gameStart = true;
     console.log(playerPoints);
   }
-  // }
-  // if (gameStart === true) {
-  //   dealerHand.push(card);
-  //   playerHand.push(card);
-  //   addCard(dealer);
-  //   addCard(player);
-  // }
+
   startButton.style.display = "none";
   hitButton.style.display = "block";
   standButton.style.display = "block";
@@ -171,17 +165,25 @@ standButton.addEventListener("click", (e) => {
 });
 
 function checkEndOfGame() {
+  if (dealerPoints <= 16) {
+    const addDealerCard = addCard(dealer);
+    dealerHand.push(addDealerCard);
+    if (dealerPoints > 21) {
+      dealerWon = true;
+    }
+  }
   if (playerPoints > 21) {
-    playerWon = false;
-    gameOver = true;
+    document.getElementById("#player-results").innerHTML = "Dealer Wins";
+    // const pointPlayerDisplay = document.querySelector("#player-results");
+    // pointPlayerDisplay.innerHTML = "You win!";
+    // playerWon = false;
+    // gameOver = true;
   } else if (dealerPoints > 21) {
     playerWon = true;
     gameOver = true;
-  } else if (gameOver) {
-    if (playerPoints > dealerPoints) {
-      playerWon = true;
-    } else {
-      playerWon = false;
-    }
+  } else if (playerPoints > dealerPoints) {
+    playerWon = true;
+  } else {
+    playerWon = false;
   }
 }
