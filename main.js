@@ -84,20 +84,10 @@ const dealer = document.querySelector(".dealer-hand");
 
 const addCard = (player) => {
   const card = chooseCard();
-  player.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}  <span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
+  player.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}<span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
   return card;
   // dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value} <span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
 };
-
-// addCard(player);
-// addCard(dealer);
-
-// for (let index = 0; index < 1; index++) {
-//   addCard();
-// }
-
-// player.push(deck.pop()).innerHTML;
-// player.push(card.pop()).innerHTML;
 
 startButton.addEventListener("click", () => {
   // const card = chooseCard();
@@ -111,11 +101,20 @@ startButton.addEventListener("click", () => {
     // addCard(player);
     dealerHand.push(addDealerCard);
     playerHand.push(addPlayerCard);
-    const points = getCardTotal(playerHand);
+    let points = getCardTotal(playerHand);
+    dealerPoints = getCardTotal(dealerHand);
+    console.log(dealerPoints);
     playerPoints = points;
     gameStart = true;
     console.log(playerPoints);
   }
+
+  document.getElementById("dealer-results").innerHTML = `${getCardTotal(
+    dealerHand
+  )}`;
+  document.getElementById("player-results").innerHTML = `${getCardTotal(
+    playerHand
+  )}`;
 
   startButton.style.display = "none";
   hitButton.style.display = "block";
@@ -127,17 +126,10 @@ const getCardTotal = (deck) => {
   deck.forEach((card) => {
     const weight = card.weight;
     points += weight;
+    return points;
   });
   return points;
 };
-
-// const card = chooseCard();
-// gameStart = true;
-// for (let index = 0; index < 2; index++) {
-//   addCard();
-//   playerHand.push(card);
-//   dealerHand.push(card);
-// }
 
 hitButton.addEventListener("click", () => {
   if (playerHand.length < 5) {
@@ -145,45 +137,47 @@ hitButton.addEventListener("click", () => {
     // const card = chooseCard();
     // dealerHand.push(card);
     playerHand.push(playerCard);
+    getCardTotal(playerHand);
+    console.log(getCardTotal(playerHand));
     // addCard(dealer);
     // addCard(player);
     console.log(playerHand);
   }
-});
 
-// hitButton.addEventListener("click", (e) => {
-//   const card = chooseCard();
-//   for (let index = 0; index < 1; index++) {
-//     addCard();
-//   playerHands.push(card);
-//   checkEndOfGame();
-// });
+  document.getElementById("player-results").innerHTML = `${getCardTotal(
+    playerHand
+  )} `;
+});
 
 standButton.addEventListener("click", (e) => {
-  gameOver = true;
   checkEndOfGame();
+  getCardTotal(dealerHand);
+  console.log(getCardTotal(dealerHand));
+  gameOver = true;
+
+  document.getElementById("dealer-results").innerHTML = `${getCardTotal(
+    dealerHand
+  )} `;
 });
+
+document.getElementById("dealer-results").innerHTML = `${dealerPoints}`;
+document.getElementById("player-results").innerHTML = `${playerPoints}`;
+
+dealerWins = "Dealer Wins";
 
 function checkEndOfGame() {
   if (dealerPoints <= 16) {
-    const addDealerCard = addCard(dealer);
-    dealerHand.push(addDealerCard);
-    if (dealerPoints > 21) {
-      dealerWon = true;
+    if (dealerHand.length < 5) {
+      const addDealerCard = addCard(dealer);
+      dealerHand.push(addDealerCard);
     }
   }
-  if (playerPoints > 21) {
-    document.getElementById("#player-results").innerHTML = "Dealer Wins";
-    // const pointPlayerDisplay = document.querySelector("#player-results");
-    // pointPlayerDisplay.innerHTML = "You win!";
-    // playerWon = false;
-    // gameOver = true;
-  } else if (dealerPoints > 21) {
-    playerWon = true;
-    gameOver = true;
+
+  if (playerPoints > 21 || dealerPoints > playerPoints) {
+    document.querySelector(".dealerWins").innerHTML = `${dealerWins}`;
   } else if (playerPoints > dealerPoints) {
-    playerWon = true;
-  } else {
-    playerWon = false;
+    document.querySelector(".dealerWins").innerHTML = `${dealerWins}`;
+  } else if ((playerPoints = dealerPoints)) {
+    document.querySelector(".draw").innerHTML = `${draw}`;
   }
 }
