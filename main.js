@@ -13,24 +13,10 @@ let playerHand = [];
 let dealerHand = [];
 let playerPoints = 0;
 let dealerPoints = 0;
-let gameStart = false;
-let gameOver = false;
 
-// button;
+// hit/stand button starting display
 hitButton.style.display = "none";
 standButton.style.display = "none";
-
-// startButton.addEventListener("click", () => {
-//   start.style.display("none");
-// });
-
-//building a deck of cards
-class Card {
-  constructor(suit, value) {
-    this.suit = suit;
-    this.value = value;
-  }
-}
 
 //create deck with suit and values
 for (let i = 0; i < suits.length; i++) {
@@ -42,12 +28,11 @@ for (let i = 0; i < suits.length; i++) {
     let weight = parseInt(values[x]);
     if (values[x] == "J" || values[x] == "Q" || values[x] == "K") weight = 10;
     if (values[x] == "A") weight = 11;
-    // console.log(weight);
+
     let card = { value: values[x], suit: suits[i], weight: weight };
     deck.push(card);
   }
 }
-console.log(deck);
 
 //shuffle method
 // function shuffle() {
@@ -61,8 +46,7 @@ console.log(deck);
 // }
 // shuffle();
 
-//choose card
-
+//function to choose a random card from the deck
 function chooseCard() {
   let choice = Math.floor(Math.random() * deck.length);
   const cardChoice = deck[choice];
@@ -74,30 +58,27 @@ function chooseCard() {
   return cardChoice;
 }
 const card = chooseCard();
-// console.log(card);
 
-const player = document.querySelector(".player-hand");
-const dealer = document.querySelector(".dealer-hand");
-
-const addCard = (player) => {
+//display cards onto the browser
+const addCard = (players) => {
   const card = chooseCard();
-  player.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}<span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
+  players.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}<span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
   return card;
   // dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value} <span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
 };
 
-startButton.addEventListener("click", () => {
-  // const card = chooseCard();
-  // console.log(card);
+//initialising the starting function
+const player = document.querySelector(".player-hand");
+const dealer = document.querySelector(".dealer-hand");
 
-  // if (gameStart === false) {
+startButton.addEventListener("click", () => {
   for (let index = 0; index < 2; index++) {
     const addDealerCard = addCard(dealer);
     const addPlayerCard = addCard(player);
-    // addCard(dealer);
-    // addCard(player);
+
     dealerHand.push(addDealerCard);
     playerHand.push(addPlayerCard);
+
     let points = getCardTotal(playerHand);
     dealerPoints = getCardTotal(dealerHand);
     console.log(dealerPoints);
@@ -118,6 +99,7 @@ startButton.addEventListener("click", () => {
   standButton.style.display = "block";
 });
 
+//getting total points
 const getCardTotal = (deck) => {
   let points = 0;
   deck.forEach((card) => {
@@ -128,6 +110,7 @@ const getCardTotal = (deck) => {
   return points;
 };
 
+//checks for conditions to win/lose
 function checkEndOfGame(playerPoints, dealerPoints) {
   if (playerPoints > 21) {
     const dealerWins = document.querySelector(".dealerWins");
@@ -136,6 +119,14 @@ function checkEndOfGame(playerPoints, dealerPoints) {
   if (dealerPoints > 21) {
     const playerWins = document.querySelector(".playerWins");
     playerWins.innerHTML = "Player Wins";
+  }
+  // if (playerPoints == dealerPoints) {
+  //   const draw = document.querySelector(".draw");
+  //   document.querySelector(".draw").appendChild(draw);
+  // }
+  if (playerPoints == dealerPoints) {
+    const draw = document.querySelector(".draw");
+    draw.document.innerHTML = "Draw";
   }
   if (
     (dealerPoints < 22 && dealerPoints > playerPoints) ||
@@ -146,24 +137,45 @@ function checkEndOfGame(playerPoints, dealerPoints) {
   } else if (playerPoints > dealerPoints) {
     const playerWins = document.querySelector(".playerWins");
     playerWins.innerHTML = "Player Wins";
-  } else if (playerPoints == dealerPoints) {
-    const draw = document.querySelector(".draw");
-    document.querySelector(".draw").appendChild(draw);
   }
+  //  else if (playerPoints == dealerPoints) {
+  //   const draw = document.querySelector(".draw");
+  //   document.querySelector(".draw").appendChild(draw);
+  // }
+  // } else if (
+  //   playerPoints == dealerPoints &&
+  //   playerHand.card.length > dealerHand.card.length
+  // ) {
+  //   const dealerWins = document.querySelector(".dealerWins");
+  //   dealerWins.innerHTML = "Dealer Wins";
+  // } else if (
+  //   playerPoints == dealerPoints &&
+  //   playerHand.card.length < dealerHand.card.length
+  // ) {
+  //   const playerWins = document.querySelector(".playerWins");
+  //   playerWins.innerHTML = "Player Wins";
+  // } else if (
+  //   playerPoints == dealerPoint &&
+  //   playerHand.card.length == dealerHand.card.length
+  // ) {
+  //   const draw = document.querySelector(".draw");
+  //   draw.innerHTMLdocument = "Draw";
+  // }
 }
 
+// hit condition to win/lose
 const hitGameOverCheck = (playerPoints) => {
   if (playerPoints > 21) {
     const dealerWins = document.querySelector(".dealerWins");
     dealerWins.innerHTML = "Dealer Wins";
   } else if (playerPoints == 21) {
     const playerWins = document.querySelector(".playerWins");
-    dealerWins.innerHTML = "Player Wins";
+    playerWins.innerHTML = "Player Wins";
   }
 };
 
+//initalising hit button function
 hitButton.addEventListener("click", () => {
-  // checkEndOfGame();
   if (playerHand.length < 5) {
     const playerCard = addCard(player);
     // const card = chooseCard();
@@ -181,6 +193,7 @@ hitButton.addEventListener("click", () => {
   )} `;
 });
 
+////initalising hit button function
 standButton.addEventListener("click", (e) => {
   checkEndOfGame(getCardTotal(playerHand), getCardTotal(dealerHand));
   getCardTotal(dealerHand);
@@ -191,11 +204,18 @@ standButton.addEventListener("click", (e) => {
       dealerHand.push(addDealerCard);
     }
   }
+  // if (playerPoint > dealerPoints) {
+  //   if (dealerHand.length < 5) {
+  //     const addDealerCard = addCard(dealer);
+  //     dealerHand.push(addDealerCard);
+  //   }
+  // }
 
   document.getElementById("dealer-results").innerHTML = `${getCardTotal(
     dealerHand
   )} `;
 });
 
+//update score on display
 document.getElementById("dealer-results").innerHTML = `${dealerPoints}`;
 document.getElementById("player-results").innerHTML = `${playerPoints}`;

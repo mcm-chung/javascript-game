@@ -1,3 +1,6 @@
+$breakpoint-desktop: 1024px;
+$breakpoint-mobile: 480px;
+
 * {
   padding: 0;
   margin: 0;
@@ -19,7 +22,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  // justify-content: center;
+  justify-content: center;
   flex-direction: column;
   margin-top: 40px;
 }
@@ -287,4 +290,38 @@
   text-shadow: 0 0 10px #ffc803, 0 0 20px #ffc803, 0 0 40px #ffc803,
     0 0 80px #ffc803;
   margin-top: 15px;
+}
+
+.newGame {
+  border: 2px solid #15f4ee;
+  box-shadow: 0 0 10px #15f4ee, 0 0 20px #15f4ee, 0 0 40px #15f4ee;
+  color: #15f4ee;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.5s;
+
+  padding: 10px;
+  margin-top: 20px;
+
+  font-family: library;
+}
+
+newGame:hover {
+  box-shadow: 0 5px 25px 0 #15f4ee inset, 0 5px 25px 0 #15f4ee inset;
+  text-shadow: 0 0 5px #15f4ee, 0 0 5px #15f4ee;
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .title {
+    font-size: 40px;
+  }
+
+  .sub-header {
+    font-size: 40px;
+  }
+  .start {
+    font-size: 10px;
+  }
 }
