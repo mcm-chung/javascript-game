@@ -1,6 +1,6 @@
 # Javascript-Game - BlackJack
 
-Used vanilla Javascript to creat a standard BlackJack Game.
+Used vanilla Javascript to create a standard BlackJack Game.
 
 Overview on how BlackJack works:
 
