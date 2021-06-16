@@ -4,8 +4,22 @@ const hitButton = document.querySelector(".hit");
 const standButton = document.querySelector(".stand");
 
 // Card variables
-var suits = ["spade", "diamond", "club", "heart"];
-var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const suits = ["spade", "diamond", "club", "heart"];
+const values = [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+  "A",
+];
 
 //Game variables
 let deck = [];
@@ -21,10 +35,6 @@ standButton.style.display = "none";
 //create deck with suit and values
 for (let i = 0; i < suits.length; i++) {
   for (let x = 0; x < values.length; x++) {
-    // const weight = parseInt(values[i]);
-    // if (values[i] == "J" || values[i] == "Q" || values[i] == "K") weight = 10;
-    // if (values[i] == "A") weight = 11;
-    // console.log(weight);
     let weight = parseInt(values[x]);
     if (values[x] == "J" || values[x] == "Q" || values[x] == "K") weight = 10;
     if (values[x] == "A") weight = 11;
@@ -34,27 +44,15 @@ for (let i = 0; i < suits.length; i++) {
   }
 }
 
-//shuffle method
-// function shuffle() {
-//   for (let i = 0; i < deck.length; i++) {
-//     let location1 = Math.floor(Math.random() * deck.length);
-//     let location2 = Math.floor(Math.random() * deck.length);
-
-//     shuffleDeck.push(deck[location1]);
-//   }
-//   console.log(shuffleDeck);
-// }
-// shuffle();
-
 //function to choose a random card from the deck
 function chooseCard() {
   let choice = Math.floor(Math.random() * deck.length);
-  const cardChoice = deck[choice];
 
   const firstDeckHalf = deck.slice(0, choice);
   const secondDeckHalf = deck.slice(choice + 1);
   deck = firstDeckHalf.concat(secondDeckHalf);
 
+  const cardChoice = deck[choice];
   return cardChoice;
 }
 const card = chooseCard();
@@ -64,7 +62,6 @@ const addCard = (players) => {
   const card = chooseCard();
   players.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value}<span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
   return card;
-  // dealer.innerHTML += `<div id="${card.value}" class="card ${card.suit}">${card.value} <span class='iconify' data-icon='bi:suit-${card.suit}' data-inline='false'></span></div>`;
 };
 
 //initialising the starting function
@@ -204,12 +201,6 @@ standButton.addEventListener("click", (e) => {
       dealerHand.push(addDealerCard);
     }
   }
-  // if (playerPoint > dealerPoints) {
-  //   if (dealerHand.length < 5) {
-  //     const addDealerCard = addCard(dealer);
-  //     dealerHand.push(addDealerCard);
-  //   }
-  // }
 
   document.getElementById("dealer-results").innerHTML = `${getCardTotal(
     dealerHand
